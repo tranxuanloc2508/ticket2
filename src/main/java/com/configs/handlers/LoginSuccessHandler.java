@@ -28,7 +28,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         User u = this.userDetailsService.getUserByname(a.getName()).get(0);
         request.getSession().setAttribute("currentUser", u);
         
-        response.sendRedirect("/mavenproject2");
+        response.sendRedirect("/CS82TicketSale");
     }
     
 }

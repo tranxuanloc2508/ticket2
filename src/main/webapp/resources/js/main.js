@@ -1,7 +1,6 @@
 
 
 function addComment(idtrip) {
-    event.preventDefault();
     fetch("/CS82TicketSale/api/add-comment/", {
         method: 'post',
         body: JSON.stringify({
@@ -19,10 +18,10 @@ function addComment(idtrip) {
         console.info(data);
         let area = document.getElementById("commentArea");
         area.innerHTML = `
-                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${c.user.image}" width="45">
+                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${data.user.avatar}" width="45">
                                 <div class="d-flex flex-row align-items-center commented-user mt-3">
                                     <span class="dot mb-3">${data.user.username}</span>
-                                    <i class=" mb-3 ml-4">${data.createddate}</i>
+                                    <i class=" mb-3 ml-4">${moment(data.createdDate).fromNow()}</i>
                                 </div>
                                 <div class="comment-text-sm"><span>${data.detail}</span></div>                  
                             </div>` + area.innerHTML;
@@ -354,5 +353,5 @@ const data = {
 
 
 
-})(jQuery);
+})
 

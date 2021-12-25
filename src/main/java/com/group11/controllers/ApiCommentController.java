@@ -8,6 +8,7 @@ package com.group11.controllers;
 import com.group11.pojos.Comment;
 import com.group11.pojos.User;
 import com.group11.services.CommentService;
+import com.group11.services.UserService;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiCommentController {
      @Autowired
     private CommentService commentService;
+      @Autowired
+    private UserService userService;
     
 //    @Autowired
 //    private WebAppValidator commentValidator;
@@ -40,6 +43,7 @@ public class ApiCommentController {
         MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<Comment> addComment( @RequestBody Map<String, String> params,HttpSession session) {
         User u= (User) session.getAttribute("currentUser");
+//        User u= this.userService.getUserId(1);
         if(u != null)
             try {
                 String comment = params.get("detail" );
